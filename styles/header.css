@@ -1,0 +1,23 @@
+.workout-program-header-container{
+  background-color: rgb(239, 240, 241);
+
+ height: 60px;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between ;
+  align-items: center;
+  padding: 10px;
+  
+}
+
+.workout-day-list{
+  flex: 1;
+}
+
+.workout-day-program{
+  flex:2;
+}

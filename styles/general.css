@@ -1,0 +1,13 @@
+body {
+  font-family: Nunito Sans;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  height: 1000px;
+  
+}
+
+.layout{
+  display: flex;
+  flex-direction: row;
+}
