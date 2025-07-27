@@ -1,0 +1,61 @@
+.exercises {
+
+  display: flex;
+
+  flex: 1;
+
+  flex-direction: column;
+
+
+
+}
+
+.excercise-added {
+
+
+
+  display: flex;
+
+
+
+  gap: 20px;
+
+  align-items: center;
+
+  justify-content: space-around;
+
+
+
+
+
+
+
+
+
+}
+
+.excercise-delete-button {
+
+
+
+  width: 80px;
+
+  height: 40px;
+
+  color: white;
+
+  font-weight: bold;
+
+  background-color: rgb(175, 29, 29);
+
+  border: none;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+
+
+
+
+}
