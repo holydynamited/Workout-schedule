@@ -1,13 +1,17 @@
-.exercises {
+.excercise-workout-plan {
 
   display: flex;
-
   flex: 1;
-
   flex-direction: column;
 
+}
 
-
+.exercices{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+ 
+  
 }
 
 .excercise-added {
@@ -34,7 +38,7 @@
 
 }
 
-.excercise-delete-button {
+.excercise-delete-button,.excercise-add-button {
 
 
 
@@ -58,4 +62,23 @@
 
 
 
+}
+
+.excercise-input-bars {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-left: 140px;
+  margin-top: 20px;
+  
+}
+
+.exercise-input-bar {
+  
+ 
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
