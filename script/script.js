@@ -6,34 +6,38 @@ let workoutInfo = [{
 
   
   
-  id: "ex-12345",
+ 
   name: "Push-ups",
   sets: 3,
   reps: 15,
   
 },
 {
-  id: "ex-12346",
+  
   name: "Pull-ups",
   sets: 4,
   reps: 12,
 },
 {
-  id: "ex-123457",
+  
   name: "Dips",
   sets: 3,
   reps: 10,
 }
 ];
 
+const excerciseBlock = document.querySelector('.js-excercise-block');
+const nameInput = document.querySelector('.js-name-input');
+const setsInput = document.querySelector('.js-sets-input');
+const repsInput = document.querySelector('.js-reps-input');
 
-const excerciceBlock = document.querySelector('.js-excercice-block');
 
-function renderExcercice() {
+function renderExcercise() {
+  
   let html = '';
 
   workoutInfo.forEach((value, i) => {
-    const { id, name, sets, reps } = value;
+    const {  name, sets, reps } = value;
     html += ` <div class="excercise-added ">
      
         <p class="excercise-name">${name}</p>
@@ -45,13 +49,39 @@ function renderExcercice() {
     `;
   });
   
-  excerciceBlock.innerHTML = html;
+  excerciseBlock.innerHTML = html;
   
    document.querySelectorAll('.js-delete').forEach((btn, i) => {
     btn.addEventListener('click', () => {
       workoutInfo.splice(i, 1);
-      renderExcercice();
+      renderExcercise();
     });
   });
 }
-renderExcercice();
+document.querySelector('.js-add').addEventListener
+  ('click', () => addExcercise());
+
+
+function addExcercise() {
+  const name = nameInput.value;
+  const sets = setsInput.value;
+  const reps = repsInput.value;
+
+  workoutInfo.push({
+    name,
+    sets,
+    reps
+  });
+
+  nameInput.value = '';
+  setsInput.value = '';
+  repsInput.value = '';
+
+  renderExcercise();
+
+
+}
+
+
+
+renderExcercise();
