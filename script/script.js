@@ -2,41 +2,32 @@
 
 
 
-let workoutInfo = [{
+let workoutInfo = {
+  monday: [],
+  tuesday: [],
+  wednesday: [],
+  thursday: [],
+  friday: [],
+  saturday: [],
+  sunday: []
+};
 
-  
-  
- 
-  name: "Push-ups",
-  sets: 3,
-  reps: 15,
-  
-},
-{
-  
-  name: "Pull-ups",
-  sets: 4,
-  reps: 12,
-},
-{
-  
-  name: "Dips",
-  sets: 3,
-  reps: 10,
-}
-];
+
+
 
 const excerciseBlock = document.querySelector('.js-excercise-block');
 const nameInput = document.querySelector('.js-name-input');
 const setsInput = document.querySelector('.js-sets-input');
 const repsInput = document.querySelector('.js-reps-input');
 
+let currentDay = 'monday';
+
 
 function renderExcercise() {
   
   let html = '';
 
-  workoutInfo.forEach((value, i) => {
+  workoutInfo[currentDay].forEach((value, i) => {
     const {  name, sets, reps } = value;
     html += ` <div class="excercise-added ">
      
@@ -48,26 +39,26 @@ function renderExcercise() {
       </div>
     `;
   });
+
+  saveToLocalStorage();
   
   excerciseBlock.innerHTML = html;
   
    document.querySelectorAll('.js-delete').forEach((btn, i) => {
     btn.addEventListener('click', () => {
-      workoutInfo.splice(i, 1);
+      workoutInfo[currentDay].splice(i, 1);
+       saveToLocalStorage();
       renderExcercise();
     });
   });
 }
-document.querySelector('.js-add').addEventListener
-  ('click', () => addExcercise());
-
 
 function addExcercise() {
   const name = nameInput.value;
   const sets = setsInput.value;
   const reps = repsInput.value;
 
-  workoutInfo.push({
+  workoutInfo[currentDay].push({
     name,
     sets,
     reps
@@ -82,6 +73,37 @@ function addExcercise() {
 
 }
 
+function saveToLocalStorage() {
+  localStorage.setItem('workoutInfo', JSON.stringify(workoutInfo));
+}
 
+function loadFromLocalStorage() {
+  const data = localStorage.getItem('workoutInfo');
+  if (data) {
+    workoutInfo = JSON.parse(data);
+  }
+}
+
+
+
+
+  document.querySelector('.js-add').addEventListener
+  ('click', () => addExcercise());
+  
+  const buttons = document.querySelectorAll('.sidebar-button');
+  
+  buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const day = button.dataset.day;
+    console.log(day); 
+
+    currentDay = day;
+    renderExcercise();
+  });
+});
+ 
+
+
+loadFromLocalStorage();
 
 renderExcercise();
